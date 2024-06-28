@@ -70,7 +70,7 @@ class HomeController extends Controller
         if($image){
 
             $imagename=time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('product' , $imagename);
+            $request->img->move('product' , $imagename);
             $data->image = $imagename;
         }
 
@@ -79,6 +79,12 @@ class HomeController extends Controller
         return redirect()->back();
 
 
+    }
+
+
+    public function go_addProduct(){
+
+        return view ('home');
     }
 
 

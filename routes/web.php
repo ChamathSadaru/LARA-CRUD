@@ -17,5 +17,7 @@ Route::get('update_product/{id}' , [HomeController::class, 'update_product']);
 
 Route::post('edit_Product/{id}' , [HomeController::class, 'edit_Product']);
 
+Route::get('go_addProduct' , [HomeController::class, 'go_addProduct']);
+
 
 

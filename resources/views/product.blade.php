@@ -52,6 +52,10 @@
 
             </div>
 
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-4">
+                    <a href="{{ url('go_addProduct') }}" class="btn btn-light me-md-2 col-3" type="button">Add Product</a>
+                </div>
+
         </div>
     </div>
 
