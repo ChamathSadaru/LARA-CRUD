@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Add</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
@@ -15,6 +18,46 @@
 
             <div class="col-8 card my-4 shadow-lg border">
                 <h1 class="text-center text-danger my-4">Add Product</h1>
+
+                @if($errors){
+                @foreach($errors->all() as $error)
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: '{{ $error }}',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Close'
+                        });
+                    });
+                </script>
+                @endforeach
+                }else{
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: '<strong>Success</strong>',
+                        html: '<p>Product Added Successfully</p>',
+                        showConfirmButton: true,
+                        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Close',
+                        buttonsStyling: true,
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        },
+                        timer: 5000,
+                        timerProgressBar: true,
+                        backdrop: true,
+                        allowOutsideClick: false,
+                        allowEscapeKey: true,
+                        allowEnterKey: true,
+                        stopKeydownPropagation: true
+                    });
+                </script>
+                }
+
+                @endif
+
 
                 <form action="{{url('/add_Product')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -31,7 +74,7 @@
                         <input type="file" class="form-control" name="image" id="image" placeholder="name@example.com">
                     </div>
                     <div class="mt-5">
-                        <input type="submit"  value="Add Product" class="btn btn-primary col-4 btn-lg">
+                        <input type="submit" value="Add Product" class="btn btn-primary col-4 btn-lg">
                     </div>
                 </form>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end my-2">

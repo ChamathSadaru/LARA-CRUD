@@ -15,7 +15,6 @@
 
             <h1 class="text-center text-primary my-4">Update Product</h1>
 
-
             <div class="col-8 card my-4 shadow-lg border">
                 <h1 class="text-center text-danger my-4">{{$product->title}} Update Product</h1>
 

@@ -13,6 +13,14 @@ class HomeController extends Controller
 
     public function add_Product(Request $request){
 
+        $request->validate([
+
+            'pt'=> 'required' ,
+            'pd'=> 'required' ,
+            'image'=> 'required',
+
+        ]);
+
         $data =new Product;
         $data->title = $request->pt;
         $data->discriptions = $request->pd;
