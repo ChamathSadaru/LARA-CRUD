@@ -14,12 +14,16 @@ class HomeController extends Controller
     public function add_Product(Request $request){
 
         $request->validate([
+            'image' => 'required',
+            'pd' => 'required',
+            'pt' => 'required',
 
-            'pt'=> 'required' ,
-            'pd'=> 'required' ,
-            'image'=> 'required',
-
+        ], [
+            'pt.required' => 'Product title is required',
+            'pd.required' => 'Product description is required',
+            'image.required' => 'Product image is required',
         ]);
+        
 
         $data =new Product;
         $data->title = $request->pt;
@@ -33,7 +37,7 @@ class HomeController extends Controller
         }
 
         $data->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Product added successfully');
     }
 
     public function show_product(){
